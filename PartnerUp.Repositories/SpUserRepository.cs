@@ -31,7 +31,8 @@ namespace PartnerUp.Repositories
 
         public bool Insert(SP_UserEntity toInsert)
         {
-            string requete = @"exec [SP_User_Insert]";
+            //toInsert.Name + " " + toInsert.LastName + " " + toInsert.Email + " " + toInsert.Password + " " + toInsert.Image;
+            string requete = @"exec [SP_User_Insert]" + toInsert.Name + "," + toInsert.LastName + "," + toInsert.Email + "," + toInsert.Password + "," + toInsert.Image;
             return base.Insert(toInsert, requete);
         }
 

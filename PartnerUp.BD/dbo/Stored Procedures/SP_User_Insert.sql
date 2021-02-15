@@ -1,12 +1,13 @@
 ﻿CREATE PROCEDURE [dbo].[SP_User_Insert]
-	@name NVARCHAR(50),
-	@lastName NVARCHAR(50),
-	@email NVARCHAR(256),
-	@password NVARCHAR(256),
-	@image NVARCHAR(256)
+	@Name NVARCHAR(50),
+	@LastName NVARCHAR(50),
+	@Email NVARCHAR(256),
+	@Password NVARCHAR(256),
+	@Image NVARCHAR(256)
 AS
-	DECLARE  @salt CHAR(8)
-	SET @salt = [dbo].SF_GenerateSalt()
-	INSERT INTO [User] ([Name], [LastName], [Email], [Password], [Image], [Salt])
+	DECLARE @IdUser INTEGER, @Salt CHAR(8)
+	SET @Salt = [dbo].SF_GenerateSalt()
+	SET @IdUser = @@IDENTITY
+	INSERT INTO [User] ([IdUser],[Name], [LastName], [Email], [Password], [Image], [Salt])
 	OUTPUT inserted.IdUser
-	VALUES (@name, @lastname, @email, dbo.SF_EncryptedPassword(@password, @salt), @image, @salt)
+	VALUES (@IdUser, @Name, @Lastname, @Email, dbo.SF_EncryptedPassword(@Password, @Salt), @Image, @Salt)
