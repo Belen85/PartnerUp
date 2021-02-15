@@ -5,7 +5,6 @@
     [Email]    NVARCHAR (256) NOT NULL,
     [Password] VARBINARY (32) NOT NULL,
     [Salt]     CHAR (8)       NOT NULL,
-    [Admin]    BIT            NOT NULL,
     [Image] NVARCHAR(256) NULL, 
     CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED ([IdUser] ASC)
 );

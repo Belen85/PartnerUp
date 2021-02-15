@@ -58,6 +58,8 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Fonctions Scalaires" />
+    <Folder Include="dbo\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\User.sql" />
@@ -73,5 +75,8 @@
     <Build Include="dbo\Tables\City.sql" />
     <Build Include="dbo\Tables\Availability.sql" />
     <Build Include="dbo\Tables\Address.sql" />
+    <Build Include="dbo\Fonctions Scalaires\SF_EncryptedPassword.sql" />
+    <Build Include="dbo\Fonctions Scalaires\SF_GenerateSalt.sql" />
+    <Build Include="dbo\Stored Procedures\SP_User_Insert.sql" />
   </ItemGroup>
 </Project>

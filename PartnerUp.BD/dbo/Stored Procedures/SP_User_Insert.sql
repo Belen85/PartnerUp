@@ -6,9 +6,7 @@
 	@image NVARCHAR(256)
 AS
 	DECLARE  @salt CHAR(8)
-	DECLARE @admin BIT
-	SET @admin = FALSE;
 	SET @salt = [dbo].SF_GenerateSalt()
-	INSERT INTO [User] ([Name], [LastName], [Email], [Password], [Image], [Salt], [Admin])
-	OUTPUT inserted.idUser
-	VALUES (@name, @lastname, @email, dbo.SF_EncryptedPassword(@password, @salt), @image, @salt, @admin)
+	INSERT INTO [User] ([Name], [LastName], [Email], [Password], [Image], [Salt])
+	OUTPUT inserted.IdUser
+	VALUES (@name, @lastname, @email, dbo.SF_EncryptedPassword(@password, @salt), @image, @salt)

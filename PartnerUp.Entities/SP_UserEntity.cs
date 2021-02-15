@@ -8,6 +8,7 @@ namespace PartnerUp.Entities
 {
     public class SP_UserEntity
     {
+        int _idUser;
         private string _name, _lastName, _email, _image, _password ;
 
         public string Name
@@ -72,6 +73,19 @@ namespace PartnerUp.Entities
             set
             {
                 _password = value;
+            }
+        }
+
+        public int IdUser
+        {
+            get
+            {
+                return _idUser;
+            }
+
+            set
+            {
+                _idUser = value;
             }
         }
     }
