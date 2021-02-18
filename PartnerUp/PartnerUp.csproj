@@ -137,15 +137,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Member\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infra\SessionUtils.cs" />
-    <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
+    <Compile Include="Models\RegisterLoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\fontawesome-all.min.css" />
@@ -198,6 +202,15 @@
     <Content Include="img\customer\customar2.png" />
     <Content Include="img\customer\customar_bg.png" />
     <Content Include="img\customer\cutomer.jpg" />
+    <Content Include="img\dancers\anneHathaway.jpg" />
+    <Content Include="img\dancers\backgroundDancers.jpg" />
+    <Content Include="img\dancers\jenniferLawrence.jpg" />
+    <Content Include="img\dancers\juliaRoberts.jpg" />
+    <Content Include="img\dancers\leonardoDicaprio.jpg" />
+    <Content Include="img\dancers\merylStreep.jpg" />
+    <Content Include="img\dancers\scarlettJohansson.jpg" />
+    <Content Include="img\dancers\tomHanks.jpg" />
+    <Content Include="img\dancers\willSmith.jpg" />
     <Content Include="img\dining\dining-img.jpg" />
     <Content Include="img\dining\dining-img.png" />
     <Content Include="img\dining\dining-img2.jpg" />
@@ -379,8 +392,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Member\Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Member\Views\web.config" />
+    <Content Include="Areas\Member\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Profile.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

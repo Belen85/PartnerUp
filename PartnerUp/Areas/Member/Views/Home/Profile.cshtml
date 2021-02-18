@@ -1,0 +1,45 @@
+﻿@model PartnerUp.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+
+<!-- slider Area Start-->
+<div class="slider-area">
+    <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/img/dancers/backgroundDancers.jpg">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
+                    <div class="hero-caption">
+                        <span>@Model.TitleProfile</span>
+                        <h2>@Model.TitleProfile</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <p>@Model.ConnecterUser.IdUser</p>
+    <p>@Model.ConnecterUser.Name</p>
+    <p>@Model.ConnecterUser.LastName</p>
+    <p>@Model.ConnecterUser.Email</p>
+    <img src="~/img/dancers/@Model.ConnecterUser.Image"/>
+</div>
+<!-- slider Area End-->
+<!-- ================ contact section start ================= -->
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title"></h2>
+            </div>
+            <div class="col-lg-8">
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ contact section end ================= -->

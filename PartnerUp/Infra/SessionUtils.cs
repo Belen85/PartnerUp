@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PartnerUp.Models;
 
 namespace PartnerUp.Infra
 {
@@ -41,5 +42,15 @@ namespace PartnerUp.Infra
             set { HttpContext.Current.Session["logged"] = value; }
         }
 
+        public static UserModel ConnectedUser
+        {
+            get
+            {
+                return (UserModel)HttpContext.Current.Session["ConnectedUser"];
+            }
+
+            set { HttpContext.Current.Session["ConnectedUser"] = value; }
+
+        }
     }
 }

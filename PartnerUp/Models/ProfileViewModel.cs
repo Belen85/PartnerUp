@@ -1,4 +1,5 @@
-﻿using PartnerUp.Repositories;
+﻿using PartnerUp.Infra;
+using PartnerUp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,42 +8,43 @@ using System.Web;
 
 namespace PartnerUp.Models
 {
-    public class RegisterViewModel
+    public class ProfileViewModel
     {
         private UnitOfWork ctx = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
-        private UserModel _userModel;
-        private string _title;
+        private UserModel _connecterUser;
+        private string _titleProfile;
 
-        public RegisterViewModel()
+        public ProfileViewModel()
         {
             //Variables primitives
-            Title = "Register";
-            //UserModel1 = ctx.SaveUser(UserModel user);
+            TitleProfile = "Profile";
+
+            ConnecterUser = SessionUtils.ConnectedUser;
         }
 
-        public UserModel UserModel
+        public string TitleProfile
         {
             get
             {
-                return _userModel;
+                return _titleProfile;
             }
 
             set
             {
-                _userModel = value;
+                _titleProfile = value;
             }
         }
 
-        public string Title
+        public UserModel ConnecterUser
         {
             get
             {
-                return _title;
+                return _connecterUser;
             }
 
             set
             {
-                _title = value;
+                _connecterUser = value;
             }
         }
     }

@@ -32,8 +32,18 @@ namespace PartnerUp.Repositories
         public bool Insert(SP_UserEntity toInsert)
         {
             //toInsert.Name + " " + toInsert.LastName + " " + toInsert.Email + " " + toInsert.Password + " " + toInsert.Image;
-            string requete = @"exec [SP_User_Insert]" + toInsert.Name + "," + toInsert.LastName + "," + toInsert.Email + "," + toInsert.Password + "," + toInsert.Image;
+            string requete = @"exec [SP_User_Insert] @name,@lastName,@email,@password,@image";
             return base.Insert(toInsert, requete);
+        }
+
+        public SP_UserEntity GetFromLogin(string email, string password)
+        {
+            Dictionary<string, object> p = new Dictionary<string, object>();
+            p.Add("email", email);
+            p.Add("password", password);
+            string requete = $"exec [SP_User_Select] @email,@password";
+            return base.Get(requete,p).FirstOrDefault();
+        
         }
 
         public bool Update(SP_UserEntity toUpdate)

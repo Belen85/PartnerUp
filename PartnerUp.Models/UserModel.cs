@@ -9,6 +9,7 @@ namespace PartnerUp.Models
 {
     public class UserModel
     {
+        private int _idUser;
         private string _name, _lastName, _email, _password, _verifyPassword, _image;
 
         [Required]
@@ -99,6 +100,19 @@ namespace PartnerUp.Models
             set
             {
                 _image = value;
+            }
+        }
+
+        public int IdUser
+        {
+            get
+            {
+                return _idUser;
+            }
+
+            set
+            {
+                _idUser = value;
             }
         }
     }

@@ -60,6 +60,8 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Fonctions Scalaires" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Scripts" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\User.sql" />
@@ -78,5 +80,12 @@
     <Build Include="dbo\Fonctions Scalaires\SF_EncryptedPassword.sql" />
     <Build Include="dbo\Fonctions Scalaires\SF_GenerateSalt.sql" />
     <Build Include="dbo\Stored Procedures\SP_User_Insert.sql" />
+    <None Include="dbo\Scripts\Script.PostDeployment.UserInsert.sql" />
+    <PostDeploy Include="dbo\Scripts\Script.PostDeployment1.sql" />
+    <Build Include="dbo\Views\V_GetRandom.sql" />
+    <None Include="dbo\Scripts\Script.PostDeployment.InsertUserChoices.sql" />
+    <None Include="dbo\Scripts\Script.PostDeployment.InsertDancerProfile.sql" />
+    <Build Include="dbo\Stored Procedures\SP_User_Select.sql" />
+    <None Include="dbo\Scripts\Script.PostDeployment.InsertSchoolData.sql" />
   </ItemGroup>
 </Project>

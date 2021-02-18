@@ -17,7 +17,7 @@ namespace PartnerUp.Repositories
             _spUserRepository = new SpUserRepository(connectionString);
         }
 
-        #region Register
+        #region Register/Login
 
         public bool SaveUser(UserModel user)
         {
@@ -37,6 +37,27 @@ namespace PartnerUp.Repositories
             us.Password = user.Password;  //comme je peux le convertir bit | string
             us.Image = user.Image;
             return _spUserRepository.Insert(us);
+        }
+
+        public UserModel UserAuth(LoginModel lm)
+        {
+            SP_UserEntity ue = ((SpUserRepository)_spUserRepository).GetFromLogin(lm.Email, lm.Password);
+            if (ue != null)
+            {
+                return new UserModel()
+                {
+                    IdUser = ue.IdUser,
+                    Name = ue.Name,
+                    LastName = ue.LastName,
+                    Email = ue.Email,
+                    Image = ue.Image
+                };
+            }
+            else
+            {
+                return null;
+            }
+            
         }
         #endregion
 
