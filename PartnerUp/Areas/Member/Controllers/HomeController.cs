@@ -18,13 +18,44 @@ namespace PartnerUp.Areas.Member.Controllers
         //    sessionutils.connecteduser;
         //}
         // GET: Member/Home
+
+
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.ZoneMembre = "active";
             if (!SessionUtils.IsLogged) return RedirectToAction("Login", "Home", new { area = "" });
-            return View();
+            SearchViewModel sv = new SearchViewModel();
+            return View(sv);
         }
 
+        [HttpPost]
+
+        public ActionResult Index(SearchModel search)
+        {
+            if (SessionUtils.IsLogged)
+            {
+                    List<PresentationCardModel> lcm = ctx.CheckInfo(search);
+                    if (lcm == null)  //Cest la meme chose que dire liste vide??? []
+                    {  
+                    ViewBag.ErrorMessage = "None results for this search";
+                    return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                    SearchViewModel svm = new SearchViewModel();
+                    svm.ListeCartes = lcm;
+                    return View(svm);
+                    }
+            }
+            else
+            {
+                Session.Abandon();
+
+                return RedirectToAction("Login", "Home", new { area = "" });
+            }
+
+        }
 
         [HttpGet]
         public ActionResult Logout()
@@ -37,6 +68,7 @@ namespace PartnerUp.Areas.Member.Controllers
         [HttpGet]
         public ActionResult Profile()
         {
+            
 
             if (SessionUtils.IsLogged)
             {
@@ -53,5 +85,49 @@ namespace PartnerUp.Areas.Member.Controllers
             }
         
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Profile(CardModel card)
+        {
+            if (SessionUtils.IsLogged)
+            {
+                if (ModelState.IsValid)
+                {
+                    card.IdUser = SessionUtils.ConnectedUser.IdUser;
+
+                    if (ctx.SaveCard(card))
+                    {
+                        ViewBag.SuccessMessage = "Your card has been registered";
+                        return RedirectToAction("Profile", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.ErrorMessage = "None card has been created yet, try again";
+                        ProfileViewModel pvm = new ProfileViewModel();
+                        return View(pvm);
+                    }
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Card error";
+                    ProfileViewModel pvm = new ProfileViewModel();
+                    return View(pvm);
+                }
+
+            }
+            else
+            {
+                Session.Abandon();
+
+                return RedirectToAction("Login", "Home", new { area = "" });
+            }
+
+
+        }
+
+
+        
     }
+
 }

@@ -20,26 +20,263 @@
         </div>
     </div>
 </div>
-<div>
-    <p>@Model.ConnecterUser.IdUser</p>
-    <p>@Model.ConnecterUser.Name</p>
-    <p>@Model.ConnecterUser.LastName</p>
-    <p>@Model.ConnecterUser.Email</p>
-    <img src="~/img/dancers/@Model.ConnecterUser.Image"/>
-</div>
-<!-- slider Area End-->
-<!-- ================ contact section start ================= -->
+<!--slide Area End-->
+<!--Personal data Start-->
 <section class="contact-section">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="contact-title"></h2>
+                <h2 class="contact-title">@Model.TitleSectionPersonalData</h2>
             </div>
             <div class="col-lg-8">
+                <form class="form-contact contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control valid" name="Name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name" value="@Model.ConnecterUser.Name">
+                                @Html.ValidationMessageFor(model => model.ConnecterUser.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control valid" name="LastName" id="lastName" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your lastname'" placeholder="Enter your lastname" value="@Model.ConnecterUser.LastName">
+                                @Html.ValidationMessageFor(model => model.ConnecterUser.LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control valid" name="Email" id="email" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email" value="@Model.ConnecterUser.Email" disabled>
+                                @Html.ValidationMessageFor(model => model.ConnecterUser.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control valid" name="Password" id="password" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Create a password'" placeholder="Create a password">
+                                @Html.ValidationMessageFor(model => model.ConnecterUser.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control valid" name="VerifyPassword" id="verifyPassword" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter again your password'" placeholder="Enter again your password">
+                                @Html.ValidationMessageFor(model => model.ConnecterUser.VerifyPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control valid" name="Image" id="image" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Upload an image'" placeholder="Upload an image" value="@Model.ConnecterUser.Image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" value="Send" class="button button-contactForm boxed-btn">Update</button>
+                    </div>
+                </form>
+                @if (ViewBag.SuccessMessage != null)
+                {
+                    @:<div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                }
 
+                @if (ViewBag.ErrorMessage != null)
+                {
+                    @:<div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+                }
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+                <div class="single-room mb-50">
+                    <div class="room-img">
+                        <img src="~/img/dancers/@Model.ConnecterUser.Image" />
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<!-- ================ contact section end ================= -->
+<!--Personal data End-->
+<!--Dancer Card Creation Start-->
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">@Model.TitleSectionCardCreation</h2>
+            </div>
+            @{
+               
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="room-caption">
+                            <form class="form-contact contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                                @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <!--Nickname-->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>@Model.TitleNickname</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <input class="form-control valid" name="Nickname" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your nickname'" placeholder="Enter your nickname">
+                                            @Html.ValidationMessageFor(model => model.CardModel.Nickname, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--Dance -->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>@Model.FilterDance</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <select name="IdDance">
+                                                @foreach (PartnerUp.Models.DanceModel item in Model.DanceModel)
+                                                {
+                                                    <option value=@item.IdDance>@item.DanceName</option>
+                                                }
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.CardModel.IdDance, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--Level -->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>@Model.FilterLevel</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <select name="IdLevel">
+                                                @foreach (PartnerUp.Models.LevelModel item in Model.LevelModel)
+                                                {
+                                                    <option value=@item.IdLevel>@item.Level</option>
+                                                }
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.CardModel.IdLevel, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--Role-->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>@Model.FilterRole</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <select name="IdRole">
+                                                @foreach (PartnerUp.Models.RoleModel item in Model.RoleModel)
+                                                {
+                                                    <option value=@item.IdRole>@item.Role</option>
+                                                }
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.CardModel.IdRole, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--Objective-->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>@Model.FilterObjective</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <select name="IdObjective">
+                                                @foreach (PartnerUp.Models.ObjectiveModel item in Model.ObjectiveModel)
+                                                {
+                                                    <option value=@item.IdObjective>@item.Objective</option>
+                                                }
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.CardModel.IdObjective, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--City-->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>@Model.FilterCity</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <select name="IdCity">
+                                                @foreach (PartnerUp.Models.CityModel item in Model.CityModel)
+                                                {
+                                                    <option value=@item.IdCity>@item.City</option>
+                                                }
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.CardModel.IdCity, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--Comment-->
+                                    <div class="col-sm-12 mb-30">
+                                        <div class="boking-tittle">
+                                            <span>Comment:</span>
+                                        </div>
+                                        <div class="select-itms">
+                                            <textarea class="form-control w-100" name="Comment" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Comment'" placeholder=" Enter Comment"></textarea>
+                                            @Html.ValidationMessageFor(model => model.CardModel.Comment, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--Create button-->
+                                    <div class="form-group mt-3">
+                                        <button type="submit" value="SEND" class="button button-contactForm boxed-btn">Create</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                    }
+
+                    if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+                }
+
+         }
+        </div>
+    </div>
+</section>
+<!--Dancer Card Creation End-->
+<!-- DancersProfile Start -->
+<section class="room-area">
+    <div class="container">
+        <!--<div class="row justify-content-center">
+            <div class="col-xl-8">-->
+        <!--font-back-tittle  -->
+        <!--<div class="font-back-tittle mb-45">
+                        <h3>My Dancers'profiles</h3>
+                </div>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">My dancer's profiles</h2>
+            </div>
+
+            @for (int i = 0; i < Model.PresentationCardModel.Count; i++)
+            {
+                <div class="col-xl-4 col-lg-6 col-md-6">
+                    <!-- Single Room -->
+                    <div class="single-room mb-50">
+                        <div class="room-img">
+                            <a href="rooms.html"><img src="~/img/dancers/@Model.PresentationCardModel[i].Image" alt=""></a>
+                        </div>
+                        <div class="room-caption">
+                            <h3><a href="rooms.html">@Model.PresentationCardModel[i].Nickname</a></h3>
+                            <div class="per-night">
+                                <span>@Model.PresentationCardModel[i].DanceName</span>
+                            </div>
+                            <div class="per-night">
+                                <span>@Model.PresentationCardModel[i].Level</span>
+                            </div>
+                            <div class="per-night">
+                                <span>@Model.PresentationCardModel[i].Objective</span>
+                            </div>
+                            <div class="per-night">
+                                <span>@Model.PresentationCardModel[i].Role</span>
+                            </div>
+                            <div class="per-night">
+                                <span>@Model.PresentationCardModel[i].City</span>
+                            </div>
+                            <div class="per-night">
+                                <span>@Model.PresentationCardModel[i].Comment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- DancersProfile End -->

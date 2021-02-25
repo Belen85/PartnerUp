@@ -8,34 +8,33 @@ using System.Threading.Tasks;
 
 namespace PartnerUp.Repositories
 {
-    public class UserRepository : BaseRepository<UserEntity>, IConcreteRepository<UserEntity>
+    public class SearchRepository : BaseRepository<SearchEntity>, IConcreteRepository<SearchEntity>
     {
-        public UserRepository(string Cnstr) : base(Cnstr)
+        public SearchRepository(string Cnstr) : base(Cnstr)
         {
 
         }
-        public bool Delete(UserEntity toDelete)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<UserEntity> Get()
+        public bool Delete(SearchEntity toDelete)
         {
             throw new NotImplementedException();
         }
 
-        public UserEntity GetOne(int PK)
+        public List<SearchEntity> Get()
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(UserEntity toInsert)
+        public SearchEntity GetOne(int PK)
         {
-            string requete = @"exec [SP_User_Insert]";
-            return base.Insert(toInsert, requete);
+            throw new NotImplementedException();
         }
 
-        public bool Update(UserEntity toUpdate)
+        public bool Insert(SearchEntity toInsert)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(SearchEntity toUpdate)
         {
             throw new NotImplementedException();
         }

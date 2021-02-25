@@ -8,34 +8,32 @@ using System.Threading.Tasks;
 
 namespace PartnerUp.Repositories
 {
-    public class UserRepository : BaseRepository<UserEntity>, IConcreteRepository<UserEntity>
+    public class AvailabilityRepository : BaseRepository<AvailabilityEntity>, IConcreteRepository<AvailabilityEntity>
     {
-        public UserRepository(string Cnstr) : base(Cnstr)
-        {
-
+        public AvailabilityRepository(string Cnstr) : base(Cnstr)
+        { 
         }
-        public bool Delete(UserEntity toDelete)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<UserEntity> Get()
+        public bool Delete(AvailabilityEntity toDelete)
         {
             throw new NotImplementedException();
         }
 
-        public UserEntity GetOne(int PK)
+        public List<AvailabilityEntity> Get()
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(UserEntity toInsert)
+        public AvailabilityEntity GetOne(int PK)
         {
-            string requete = @"exec [SP_User_Insert]";
-            return base.Insert(toInsert, requete);
+            throw new NotImplementedException();
         }
 
-        public bool Update(UserEntity toUpdate)
+        public bool Insert(AvailabilityEntity toInsert)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(AvailabilityEntity toUpdate)
         {
             throw new NotImplementedException();
         }

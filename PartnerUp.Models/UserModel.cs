@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace PartnerUp.Models
     {
         private int _idUser;
         private string _name, _lastName, _email, _password, _verifyPassword, _image;
+        //private IFormFile _image;
 
         [Required]
         [MaxLength(50)]

@@ -1,4 +1,4 @@
-﻿using NetFlask.DAL.Repositories;
+﻿using PartnerUp.DAL.Repositories;
 using PartnerUp.Entities;
 using System;
 using System.Collections.Generic;

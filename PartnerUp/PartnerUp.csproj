@@ -146,6 +146,7 @@
     <Compile Include="Infra\SessionUtils.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RegisterLoginViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -87,7 +87,7 @@ namespace PartnerUp.Controllers
                 {
                     SessionUtils.IsLogged = true;
                     SessionUtils.ConnectedUser = um;
-                    return RedirectToAction("Index", "Home", new { area = "Member" });
+                    return RedirectToAction("Profile", "Home", new { area = "Member" });
                 }
 
 

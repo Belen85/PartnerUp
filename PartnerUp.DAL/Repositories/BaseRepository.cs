@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetFlask.DAL.Repositories
+namespace PartnerUp.DAL.Repositories
 {
     public abstract class BaseRepository<T> 
         where T : class, new()
