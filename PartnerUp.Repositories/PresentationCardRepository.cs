@@ -55,7 +55,7 @@ namespace PartnerUp.Repositories
 
         public List<PresentationCardEntity> GetFromSearch(string DanceName, string Level, string Objective, string Role, string City)
         { 
-         string requete = @"SELECT [User].Image, [DancerProfile].Nickname, [Dance].DanceName, [Level].Level, [Objective].Objective, [Role].Role, [City].City, [DancerProfile].Comment
+         string requete = @"SELECT [User].IdUser, [User].Image, [DancerProfile].Nickname, [Dance].DanceName, [Level].Level, [Objective].Objective, [Role].Role, [City].City, [DancerProfile].Comment
                             FROM [PartnerUp].[dbo].[User] INNER JOIN
                             [DancerProfile] ON DancerProfile.IdUser = [User].IdUser
                             INNER JOIN [Dance] ON Dance.IdDance = DancerProfile.IdDance

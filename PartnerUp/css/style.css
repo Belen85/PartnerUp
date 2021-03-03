@@ -5025,3 +5025,17 @@ h6 {
 
 .switch-wrap {
   margin-bottom: 10px; }
+
+.single-input-secondary-belen {
+    display: block;
+    width: 100%;
+    line-height: 40px;
+    border: 1px solid transparent;
+    outline: none;
+    background-color: yellow;
+    padding: 0 20px;
+}
+    .single-input-secondary:focus {
+        outline: none;
+        border: 1px solid #f09359;
+    }

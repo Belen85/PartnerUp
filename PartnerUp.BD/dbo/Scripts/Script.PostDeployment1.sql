@@ -3,3 +3,4 @@
 :r .\Script.PostDeployment.InsertUserChoices.sql
 :r .\Script.PostDeployment.InsertDancerProfile.sql
 :r .\Script.PostDeployment.InsertSchoolData.sql
+:r .\Script.PostDeployment.InsertMessage.sql

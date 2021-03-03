@@ -195,7 +195,8 @@
                                         <a href="rooms.html"><img src="~/img/dancers/@Model.ListeCartes[i].Image" alt=""></a>
                                     </div>
                                     <div class="room-caption">
-                                        <h3><a href="rooms.html">@Model.ListeCartes[i].Nickname</a></h3>
+                                        <h3><a href="">@Model.ListeCartes[i].Nickname</a></h3>
+                                        <h3><a href="">@Model.ListeCartes[i].IdUser</a></h3>
                                         <div class="per-night">
                                             <span>@Model.ListeCartes[i].DanceName</span>
                                         </div>
@@ -215,6 +216,9 @@
                                             <span>@Model.ListeCartes[i].Comment</span>
                                         </div>
                                     </div>
+                                    <div class="room-btn pt-70">
+                                        <a href="/Member/Home/Conversation/@Model.ListeCartes[i].IdUser" class="btn view-btn1">Send message<i class="ti-angle-right"></i> </a>
+                                    </div>
                                 </div>
                             </div>
                         }
@@ -233,7 +237,7 @@
     </section>
     <!-- Room End -->
     <!-- Gallery img Start-->
-    <div class="gallery-area fix">
+    @*<div class="gallery-area fix">
         <div class="container-fluid p-0">
             <div class="row">
                 <div class="col-md-12">
@@ -251,6 +255,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
     <!-- Gallery img End-->
 </main>

@@ -126,8 +126,115 @@ namespace PartnerUp.Areas.Member.Controllers
 
         }
 
+        [HttpGet]
 
+        public ActionResult Messages()
+        {
+            if (SessionUtils.IsLogged)
+            {
+                int IdUserFrom = SessionUtils.ConnectedUser.IdUser;
+                List<ContactModel> lc = ctx.CheckContact(IdUserFrom);
+                if (lc == null)
+                {
+                    return RedirectToAction("Messages", "Home");
+                }
+                else
+                {
+                    MessagesViewModel vm = new MessagesViewModel();
+                    vm.ListeContacts = lc;
+                    return View(vm);
+                }
+               
+            }
+            else
+            {
+                Session.Abandon();
+
+                return RedirectToAction("Login", "Home", new { area = "" });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Messages(ContactModel contact)
+        {
+            if (SessionUtils.IsLogged)
+            {
+               
+            return RedirectToAction("Conversation", "Home", new { id = contact.IdUserTo});
+            }
+            else
+            {
+                Session.Abandon();
+
+                return RedirectToAction("Login", "Home", new { area = "" });
+            }
         
+        }
+
+        [HttpGet]
+
+        public ActionResult Conversation(ContactModel contact)
+        {
+
+            if (SessionUtils.IsLogged)
+            {
+                
+                contact.IdUserFrom = SessionUtils.ConnectedUser.IdUser;
+                string idUserTo = Request.Path.Substring(26);
+                int idUserToInt = int.Parse(idUserTo);
+                contact.IdUserTo = idUserToInt;
+                List<MessageModel> lm = ctx.GetAllMessage(contact);
+                ConversationViewModel cv = new ConversationViewModel();
+                cv.ListeMessages = lm;
+                return View(cv);
+            }
+            else
+            {
+                Session.Abandon();
+
+                return RedirectToAction("Login", "Home", new { area = "" });
+            }
+
+        }
+
+        [HttpPost]
+
+        public ActionResult Conversation(SendMessageModel send, ContactModel contact)
+        {
+            if (SessionUtils.IsLogged)
+            {
+                //SendMessageModel
+                send.IdUserFrom = SessionUtils.ConnectedUser.IdUser;
+                string idUserTo = Request.Path.Substring(26);
+                int idUserToInt = int.Parse(idUserTo);
+                send.IdUserTo = idUserToInt;
+                //ContactModel
+                contact.IdUserFrom = SessionUtils.ConnectedUser.IdUser;
+                contact.IdUserTo = idUserToInt;
+                if (ctx.SaveMessage(send))
+                {
+                    ViewBag.SuccessMessage = "Your message has been sent";
+                    List<MessageModel> lm = ctx.GetAllMessage(contact);
+                    ConversationViewModel cv = new ConversationViewModel();
+                    cv.ListeMessages = lm;
+                    return View(cv);
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Your message has not been sent, try again";
+                    ConversationViewModel cv = new ConversationViewModel();
+                    return View(cv);
+                }
+            }
+            else
+            {
+                Session.Abandon();
+
+                return RedirectToAction("Login", "Home", new { area = "" });
+            }
+        
+        }
+
     }
 
 }

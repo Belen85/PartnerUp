@@ -69,13 +69,17 @@
     <Compile Include="AvailabilityRepository.cs" />
     <Compile Include="CardRepository.cs" />
     <Compile Include="CityRepository.cs" />
+    <Compile Include="ContactRepository.cs" />
     <Compile Include="DanceRepository.cs" />
+    <Compile Include="IConcreteRepositroy.cs" />
     <Compile Include="LevelRepository.cs" />
+    <Compile Include="MessageRepository.cs" />
     <Compile Include="ObjectiveRepository.cs" />
     <Compile Include="PresentationCardRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleRepository.cs" />
     <Compile Include="SearchRepository.cs" />
+    <Compile Include="SendMessageRepository.cs" />
     <Compile Include="SpUserRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserRepository.cs" />

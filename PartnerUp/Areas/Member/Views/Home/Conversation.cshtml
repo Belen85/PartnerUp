@@ -1,0 +1,30 @@
+﻿@model PartnerUp.Models.ConversationViewModel
+@{
+    ViewBag.Title = "Conversation";
+}
+
+
+    @{ 
+        for (int i = 0; i < Model.ListeMessages.Count; i++)
+        { 
+        <div class="mt-10">
+            <label>@Model.ListeMessages[i].Nickname - @Model.ListeMessages[i].Date</label>
+            <input type="text" name="IdMessage" placeholder="Primary color"
+                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'" required
+                   class="single-input-primary" value="@Model.ListeMessages[i].Text">
+        </div>
+        
+        }
+
+    }
+<form method="post">
+    <div class="mt-10">
+        <input type="text" name="Text" placeholder="Primary color"
+               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'" required
+               class="single-input-primary">
+    </div>
+    <div class="room-btn pt-70">
+        <button type="submit" value="SEND" class="btn view-btn1">Send Message<i class="ti-angle-right"></i> </button>
+    </div>
+</form>
+

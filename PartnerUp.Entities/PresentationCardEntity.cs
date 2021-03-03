@@ -8,6 +8,7 @@ namespace PartnerUp.Entities
 {
     public class PresentationCardEntity
     {
+        private int _idUser;
         private string _image, _nickname, _danceName, _level, _objective, _role, _city, _comment;
 
         public string Image
@@ -111,6 +112,19 @@ namespace PartnerUp.Entities
             set
             {
                 _comment = value;
+            }
+        }
+
+        public int IdUser
+        {
+            get
+            {
+                return _idUser;
+            }
+
+            set
+            {
+                _idUser = value;
             }
         }
     }

@@ -21,6 +21,9 @@ namespace PartnerUp.Repositories
         IConcreteRepository<CityEntity> _cityRepository;
         IConcreteRepository<CardEntity> _cardRepository;
         IConcreteRepository<PresentationCardEntity> _presentationCardRepository;
+        IConcreteRepository<ContactEntity> _contactRepository;
+        IConcreteRepository<MessageEntity> _messageRepository;
+        IConcreteRepository<SendMessageEntity> _sendMessageRepository;
         //IConcreteRepository<AvailabilityEntity> _availabilityRepository;
     
         public UnitOfWork(string connectionString)
@@ -33,6 +36,9 @@ namespace PartnerUp.Repositories
             _cityRepository = new CityRepository(connectionString);
             _cardRepository = new CardRepository(connectionString);
             _presentationCardRepository = new PresentationCardRepository(connectionString);
+            _contactRepository = new ContactRepository(connectionString);
+            _messageRepository = new MessageRepository(connectionString);
+            _sendMessageRepository = new SendMessageRepository(connectionString);
             //_availabilityRepository = new AvailabilityRepository(connectionString);
         }
 
@@ -244,6 +250,7 @@ namespace PartnerUp.Repositories
                 foreach (PresentationCardEntity item in lce)
                 {
                     PresentationCardModel pm = new PresentationCardModel();
+                    pm.IdUser = item.IdUser;
                     pm.Image = item.Image;
                     pm.DanceName = item.DanceName;
                     pm.Level = item.Level;
@@ -262,6 +269,59 @@ namespace PartnerUp.Repositories
             
             
         
+        }
+        #endregion
+
+        #region Messages
+
+        public List<ContactModel> CheckContact(int IdUserFrom)
+        {
+            List<ContactEntity> lce = ((ContactRepository)_contactRepository).GetFromIdUserFrom(IdUserFrom);
+            if (lce != null)
+            {
+                List<ContactModel> lcm = new List<ContactModel>();
+                foreach (ContactEntity item in lce)
+                {
+                    ContactModel cm = new ContactModel();  //Ce n'est pas grave si je ne prends pas idUserFrom????
+                    cm.IdUserFrom = item.IdUserFrom;
+                    cm.IdUserTo = item.IdUserTo;
+                    cm.Image = item.Image;
+                    cm.Nickname = item.Nickname;
+                    lcm.Add(cm);
+                }
+                return lcm;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public List<MessageModel> GetAllMessage(ContactModel contact)
+        {
+            List<MessageEntity> lme = ((MessageRepository)_messageRepository).GetAllMessageFromToFrom(contact.IdUserTo, contact.IdUserFrom);
+            List<MessageModel> lmm = new List<MessageModel>();
+            foreach (MessageEntity item in lme)
+            {
+                MessageModel mm = new MessageModel();
+                mm.IdUserFrom = item.IdUserFrom;
+                mm.IdUserTo = item.IdUserTo;
+                mm.Nickname = item.Nickname;
+                mm.Text = item.Text;
+                mm.Date = item.Date;
+                lmm.Add(mm);
+            }
+            return lmm;
+        }
+
+        public bool SaveMessage(SendMessageModel send)
+        {
+
+            SendMessageEntity se = new SendMessageEntity();
+            se.IdUserFrom = send.IdUserFrom;
+            se.IdUserTo = send.IdUserTo;
+            se.Text = send.Text;
+            return _sendMessageRepository.Insert(se);
         }
         #endregion
 
