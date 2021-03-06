@@ -1,0 +1,178 @@
+﻿@model PartnerUp.Models.SchoolViewModel
+@{
+    ViewBag.Title = "School";
+}
+
+
+<!-- slider Area Start-->
+<div class="slider-area">
+    <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/img/dancers/backgroundDancers.jpg">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
+                    <div class="hero-caption">
+                        <span>@Model.TitleSchools</span>
+                        <h2>@Model.TitleSchools</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--slide Area End-->
+<!-- Booking Room Start-->
+<div class="booking-area">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12">
+                <form action="" method="post">
+                    <div class="booking-wrap d-flex justify-content-between align-items-center">
+                        <!-- Single Select Box -->
+                        <!--Dance-->
+                        <div class="single-select-box mb-30">
+                            <div class="boking-tittle">
+                                <span>@Model.FilterDance</span>
+                            </div>
+                            <div class="select-this">
+
+                                <div class="select-itms">
+                                    <select name="idDance">
+                                        @foreach (PartnerUp.Models.DanceModel item in Model.DanceModel)
+                                        {
+                                            <option value=@item.IdDance>@item.DanceName</option>
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Single Select Box -->
+                        <!--City-->
+                        <div class="single-select-box mb-30">
+                            <div class="boking-tittle">
+                                <span>@Model.FilterCity</span>
+                            </div>
+                            <div class="select-this">
+
+                                <div class="select-itms">
+                                    <select name="City">
+                                        @foreach (PartnerUp.Models.CityModel item in Model.CityModel)
+                                        {
+                                            <option value="@item.City">@item.City</option>
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Single Select Box -->
+                        <div class="single-select-box pt-45 mb-30">
+                            <button type="submit" value="SEND" class="button button-contactForm boxed-btn">Search Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking Room End-->
+
+@*<div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+            <div class="row">
+
+                @{
+                    if (Model.ListSchools == null)
+                    {
+                        <div></div>
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.ListSchools.Count; i++)
+                        {
+
+                            <div class="col-md-3">
+                                <iframe src="@Model.ListSchools[i].LinkGoogle" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                            <div class="col-md-9 mt-sm-20">
+                                <p>@Model.ListSchools[i].Name</p>
+                                <p>@Model.ListSchools[i].Website</p>
+                                <p>Address:</p>
+                                <p>@Model.ListSchools[i].NameLocation</p>
+                                <p>@Model.ListSchools[i].Number, @Model.ListSchools[i].Street</p>
+                                <p>@Model.ListSchools[i].Postalcode, @Model.ListSchools[i].City </p>
+                            </div>
+
+                        }
+
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<!-- Room Start -->
+<section class="room-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <!--font-back-tittle  -->
+                @*<div class="font-back-tittle mb-45">
+                        <div class="archivment-front">
+                            <h3>Our Rooms</h3>
+                        </div>
+                        <h3 class="archivment-back">Our Rooms</h3>
+                    </div>*@
+            </div>
+        </div>
+        <div class="row">
+            @{
+                if (Model.ListSchools == null)
+                {
+                    <div></div>
+
+                }
+                else
+                {
+                    for (int i = 0; i < Model.ListSchools.Count; i++)
+                    {
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <!-- Single Room -->
+                            <div class="single-room mb-50">
+                                <div class="room-img">
+                                    <iframe src="@Model.ListSchools[i].LinkGoogle" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <div class="room-caption">
+                                    <h3><a href="">@Model.ListSchools[i].Name</a></h3>
+                                    <h3><a href="">@Model.ListSchools[i].Website</a></h3>
+                                    <div class="per-night">
+                                        <span>@Model.ListSchools[i].Number, @Model.ListSchools[i].Street</span>
+                                    </div>
+                                    <div class="per-night">
+                                        <span>@Model.ListSchools[i].Postalcode, @Model.ListSchools[i].City, @Model.ListSchools[i].Country</span>
+                                    </div>
+                                   
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    }
+
+                }
+            }
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="room-btn pt-70">
+                <a href="#" class="btn view-btn1">View more  <i class="ti-angle-right"></i> </a>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Room End -->

@@ -24,6 +24,7 @@ namespace PartnerUp.Repositories
         IConcreteRepository<ContactEntity> _contactRepository;
         IConcreteRepository<MessageEntity> _messageRepository;
         IConcreteRepository<SendMessageEntity> _sendMessageRepository;
+        IConcreteRepository<SchoolEntity> _schoolRepository;
         //IConcreteRepository<AvailabilityEntity> _availabilityRepository;
     
         public UnitOfWork(string connectionString)
@@ -39,6 +40,7 @@ namespace PartnerUp.Repositories
             _contactRepository = new ContactRepository(connectionString);
             _messageRepository = new MessageRepository(connectionString);
             _sendMessageRepository = new SendMessageRepository(connectionString);
+            _schoolRepository = new SchoolRepository(connectionString);
             //_availabilityRepository = new AvailabilityRepository(connectionString);
         }
 
@@ -323,6 +325,42 @@ namespace PartnerUp.Repositories
             se.Text = send.Text;
             return _sendMessageRepository.Insert(se);
         }
+        #endregion
+
+        #region School
+
+        public List<SchoolModel> checkSchool(string City, int IdDance)
+        {
+            List<SchoolEntity> lee = ((SchoolRepository)_schoolRepository).getAllSchoolsByCriteria(City, IdDance);
+            if (lee != null)
+            {
+                List<SchoolModel> lem = new List<SchoolModel>();
+                foreach (SchoolEntity item in lee)
+                {
+                    SchoolModel sm = new SchoolModel();
+                    sm.Name = item.Name;  //Nom de l'ecole
+                    sm.Website = item.Website;
+                    sm.NameLocation = item.NameLocation;
+                    sm.Number = item.Number;
+                    sm.Street = item.Street;
+                    sm.City = item.City;
+                    sm.Country = item.Country;
+                    sm.Department = item.Department;
+                    sm.Postalcode = item.Postalcode;
+                    sm.LinkGoogle = item.LinkGoogle;
+                    lem.Add(sm);
+
+                }
+
+                return lem;
+            }
+            else
+            {
+                return null;
+            }
+        
+        }
+
         #endregion
 
     }

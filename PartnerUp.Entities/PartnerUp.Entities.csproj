@@ -52,6 +52,7 @@
     <Compile Include="PresentationCardEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleEntity.cs" />
+    <Compile Include="SchoolEntity.cs" />
     <Compile Include="SearchEntity.cs" />
     <Compile Include="SendMessageEntity.cs" />
     <Compile Include="SP_UserEntity.cs" />

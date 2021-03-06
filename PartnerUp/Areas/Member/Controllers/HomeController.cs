@@ -235,6 +235,44 @@ namespace PartnerUp.Areas.Member.Controllers
         
         }
 
+        [HttpGet]
+        public ActionResult School()
+        {
+            ViewBag.ZoneMembre = "active";
+            if (!SessionUtils.IsLogged) return RedirectToAction("Login", "Home", new { area = "" });
+            SchoolViewModel svm = new SchoolViewModel();
+            return View(svm);
+        }
+
+        [HttpPost]
+
+        public ActionResult School(string City, int IdDance)
+        {
+            if (SessionUtils.IsLogged)
+            {
+                List<SchoolModel> lsm = ctx.checkSchool(City, IdDance);
+                if (lsm == null)
+                {
+                    ViewBag.ErrorMessage = "None results for this search";
+                    return RedirectToAction("School", "Home");
+                }
+                else
+                {
+                    SchoolViewModel svm = new SchoolViewModel();
+                    svm.ListSchools = lsm;
+                    return View(svm);
+                }
+
+            }
+            else
+            {
+
+                Session.Abandon();
+                return RedirectToAction("Login", "Home", new { area = "" });
+
+            }
+        }
+
     }
 
 }

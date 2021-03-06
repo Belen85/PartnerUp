@@ -148,6 +148,7 @@
     <Compile Include="Models\MessagesViewModel.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RegisterLoginViewModel.cs" />
+    <Compile Include="Models\SchoolViewModel.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -405,6 +406,7 @@
     <Content Include="Areas\Member\Views\Home\Profile.cshtml" />
     <Content Include="Areas\Member\Views\Home\Messages.cshtml" />
     <Content Include="Areas\Member\Views\Home\Conversation.cshtml" />
+    <Content Include="Areas\Member\Views\Home\School.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

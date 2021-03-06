@@ -12,3 +12,7 @@ VALUES (1,1),
 		(1,2),
 		(1,3),
 		(2,1)
+
+INSERT INTO [DanceSchool] (IdDance, IdSchool)
+VALUES (1, 1),
+		(1, 2)
