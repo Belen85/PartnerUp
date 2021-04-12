@@ -28,7 +28,7 @@
                 <h2 class="contact-title">Register</h2>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form" action="" method="post" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
+                <form class="form-contact contact_form" action="/Home/Register" method="post" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
                     @Html.AntiForgeryToken()
                     <div class="row">
                         <div class="col-sm-12">
@@ -52,13 +52,13 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input class="form-control valid" name="Password" id="password" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Create a password'" placeholder="Create a password">
+                                <input class="form-control valid" name="Password" id="password" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Create a password'" placeholder="Create a password">
                                 @Html.ValidationMessageFor(model => model.UserModel.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input class="form-control valid" name="VerifyPassword" id="verifyPassword" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter again your password'" placeholder="Enter again your password">
+                                <input class="form-control valid" name="VerifyPassword" id="verifyPassword" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter again your password'" placeholder="Enter again your password">
                                 @Html.ValidationMessageFor(model => model.UserModel.VerifyPassword, "", new { @class = "text-danger" })
                             </div>
                         </div>

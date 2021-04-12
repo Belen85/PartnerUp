@@ -208,6 +208,7 @@
     <Content Include="img\customer\cutomer.jpg" />
     <Content Include="img\dancers\anneHathaway.jpg" />
     <Content Include="img\dancers\backgroundDancers.jpg" />
+    <Content Include="img\dancers\javierBardem.jpg" />
     <Content Include="img\dancers\jenniferLawrence.jpg" />
     <Content Include="img\dancers\juliaRoberts.jpg" />
     <Content Include="img\dancers\leonardoDicaprio.jpg" />
@@ -407,7 +408,9 @@
     <Content Include="Areas\Member\Views\Home\Messages.cshtml" />
     <Content Include="Areas\Member\Views\Home\Conversation.cshtml" />
     <Content Include="Areas\Member\Views\Home\School.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_paginate.cshtml" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

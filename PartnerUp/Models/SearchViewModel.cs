@@ -25,6 +25,8 @@ namespace PartnerUp.Models
 
         private List<PresentationCardModel> _listeCartes;
 
+
+
         public SearchViewModel()
         {
             //Variables primitives
